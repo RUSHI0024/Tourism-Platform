@@ -1,0 +1,185 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+header.scrolled {
+  background: rgba(0,0,0,0.8);
+}
+
+.logo {
+  line-height: 1;
+}
+.logo-small {
+  font-size: 14px;
+  font-weight: 300;
+}
+.logo-big {
+  font-size: 28px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  color: #ffd700;
+}
+
+.nav-right {
+  display: flex;
+  gap: 20px;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Background slider */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.hero-bg.active {
+  opacity: 1;
+}
+
+/* Overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+}
+
+/* Content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin-left: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.hero-content h1 {
+  font-size: 52px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.btn {
+  background: black;
+  color: white;
+  padding: 12px 22px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: #333;
+}
+
+/* Bottom right circle */
+.hero-next {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  z-index: 2;
+}
+
+.hero-next img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.hero-next span {
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: white;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+  .hero-content {
+    margin-left: 30px;
+  }
+  .hero-content h1 {
+    font-size: 38px;
+  }
+}
