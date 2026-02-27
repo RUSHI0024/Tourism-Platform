@@ -1,0 +1,486 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Yatra - New Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* ===== HEADER (FIXED + CLEAN FLEX) ===== */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 20px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 1000;
+      }
+
+      .logo-link {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .logo-big {
+        font-size: 28px;
+        font-weight: 900;
+      }
+
+      /* CENTER NAV */
+      nav {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .nav-links a:hover {
+        color: #ffd700;
+      }
+
+      /* RIGHT SIDE */
+      .nav-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .login-btn {
+        padding: 8px 16px;
+        border: 1px solid white;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        background: transparent;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .login-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffd700;
+      }
+
+      /* ===== EMPTY CONTENT ===== */
+      .page-content {
+        min-height: 80vh;
+        padding-top: 120px;
+      }
+
+      /* ===== FOOTER ===== */
+      .main-footer {
+        background-color: #000;
+        color: white;
+        padding: 60px 40px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-logo {
+        font-size: 32px;
+        font-weight: 900;
+        margin-bottom: 15px;
+      }
+
+      .copyright {
+        font-size: 14px;
+        color: #aaa;
+      }
+
+      .footer-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+      }
+
+      .footer-col h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+      }
+
+      .footer-col ul {
+        list-style: none;
+      }
+
+      .footer-col li {
+        margin-bottom: 12px;
+      }
+
+      .footer-col a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .footer-col a:hover {
+        color: #ffd700;
+      }
+      /* ===== VISIT INDIA PAGE ===== */
+
+      .visit-hero {
+        text-align: center;
+        padding: 140px 20px 60px;
+        background: #f5f5f5;
+      }
+
+      .visit-hero h1 {
+        font-size: 48px;
+        font-weight: 900;
+        margin-bottom: 10px;
+      }
+
+      .visit-hero p {
+        color: #555;
+        font-size: 18px;
+      }
+
+      .visit-section {
+        padding: 80px 60px;
+      }
+
+      .visit-section.light {
+        background: #f7f7f7;
+      }
+
+      .visit-section h2 {
+        font-size: 34px;
+        font-weight: 900;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .visit-text {
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 1.7;
+        color: #555;
+      }
+
+      .visit-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .visit-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .visit-card h3 {
+        margin-top: 15px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .visit-card p {
+        font-size: 14px;
+        color: #555;
+        margin-top: 8px;
+      }
+
+      /* responsive */
+      @media (max-width: 900px) {
+        .visit-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="index.html" class="logo-link">
+        <div class="logo">
+          <span class="logo-big">YATRA</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="About_Yatra.HTML">ABOUT YATRA</a></li>
+          <li><a href="PlanYourTrip.html">PLAN YOUR TRIP</a></li>
+          <li><a href="Destinations.html">DESTINATIONS</a></li>
+          <li><a href="Inspiration.HTML">INSPIRATION</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-container">
+        <a href="login" class="login-btn">Login</a>
+      </div>
+    </header>
+
+    <!-- EMPTY CONTENT -->
+
+    <!-- VISIT INDIA CONTENT -->
+    ```html
+    <!-- VISIT INDIA CONTENT -->
+    <section class="page-content">
+      <!-- HERO TITLE -->
+      <section class="visit-hero">
+        <h1>VISIT INDIA</h1>
+        <p>
+          Discover the soul of India through culture, comfort, and unforgettable
+          journeys.
+        </p>
+      </section>
+
+      <!-- THINGS TO DO -->
+      <section class="visit-section">
+        <h2>THINGS TO DO IN INDIA</h2>
+
+        <div class="visit-grid">
+          <div class="visit-card">
+            <img
+              src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da"
+              alt="Heritage"
+            />
+            <h3>Explore Heritage Sites</h3>
+            <p>
+              Visit iconic monuments, ancient temples, and UNESCO World Heritage
+              sites across India.
+            </p>
+          </div>
+
+          <div class="visit-card">
+            <img
+              src="https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+              alt="Adventure"
+            />
+            <h3>Adventure Activities</h3>
+            <p>
+              Experience trekking, river rafting, desert safaris, and thrilling
+              mountain adventures.
+            </p>
+          </div>
+
+          <div class="visit-card">
+            <img
+              src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0"
+              alt="Food"
+            />
+            <h3>Food & Culture</h3>
+            <p>
+              Taste diverse regional cuisines and experience India's vibrant
+              cultural traditions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRAVEL WITHIN INDIA -->
+      <section class="visit-section light">
+        <h2>TRAVEL WITHIN INDIA</h2>
+        <p class="visit-text">
+          India offers extensive travel options including world-class airports,
+          one of the largest railway networks, and well-connected highways.
+          Choose flights for speed, trains for scenic journeys, or road trips
+          for flexibility.
+        </p>
+      </section>
+
+      <!-- ACCOMMODATION -->
+      <section class="visit-section">
+        <h2>ACCOMMODATION</h2>
+
+        <div class="visit-grid">
+          <div class="visit-card">
+            <img
+              src="https://images.unsplash.com/photo-1566073771259-6a8506099945"
+              alt="Luxury Hotels"
+            />
+            <h3>Luxury Hotels</h3>
+            <p>
+              Experience premium hospitality with world-class amenities and
+              comfort.
+            </p>
+          </div>
+
+          <div class="visit-card">
+            <img
+              src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa"
+              alt="Budget Stay"
+            />
+            <h3>Budget Stays</h3>
+            <p>
+              Affordable and comfortable stays available across major tourist
+              destinations.
+            </p>
+          </div>
+
+          <div class="visit-card">
+            <img
+              src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
+              alt="Homestays"
+            />
+            <h3>Homestays</h3>
+            <p>
+              Live like a local and enjoy authentic Indian hospitality with
+              homestays.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SAFE TRAVEL -->
+      <section class="visit-section light">
+        <h2>SAFE TRAVEL IN INDIA</h2>
+        <p class="visit-text">
+          India is welcoming to travelers. Follow basic precautions like keeping
+          copies of documents, using verified transport, staying aware of
+          surroundings, and respecting local customs for a smooth journey.
+        </p>
+      </section>
+
+      <!-- FESTIVALS -->
+      <section class="visit-section">
+        <h2>FESTIVALS & EVENTS</h2>
+
+        <div class="visit-grid">
+          <div class="visit-card">
+            <img
+              src="https://images.unsplash.com/photo-1530897598709-cb3dafe6af42?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmlyZWNyYWNrZXJzfGVufDB8fDB8fHww"
+              alt="Diwali"
+            />
+            <h3>Diwali</h3>
+            <p>
+              The festival of lights celebrated with lamps, sweets, and grand
+              festivities.
+            </p>
+          </div>
+
+          <div class="visit-card">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1682089821031-05d132d2be0e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aG9saXxlbnwwfHwwfHx8MA%3D%3D"
+              alt="Holi"
+            />
+            <h3>Holi</h3>
+            <p>
+              The vibrant festival of colors that brings joy and togetherness.
+            </p>
+          </div>
+
+          <div class="visit-card">
+            <img
+              src="https://images.unsplash.com/photo-1699637568981-4a79d177e025?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmF2cmF0cmklMjBjZWxlYnJhdGlvbnN8ZW58MHx8MHx8fDA%3D"
+              alt="Navratri"
+            />
+            <h3>Navratri</h3>
+            <p>
+              Nine nights of dance, devotion, and colorful cultural
+              celebrations.
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-left">
+          <div class="footer-logo">Visit Yatra</div>
+          <div class="copyright">© 2026 Yatra – Smart Tourism Platform</div>
+        </div>
+
+        <div class="footer-right">
+          <div class="footer-columns">
+            <div class="footer-col">
+              <h3>VISIT INDIA</h3>
+              <ul>
+                <li><a href="visit_india.html">Things to do</a></li>
+                <li><a href="visit_india.html">Travel within India</a></li>
+                <li><a href="visit_india.html">Accommodation</a></li>
+                <li><a href="visit_india.html">Safe travel in India</a></li>
+                <li><a href="visit_india.html">Festivals & Events</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <h3>TERMS & POLICIES</h3>
+              <ul>
+                <li>
+                  <a href="https://itdc.co.in/privacy-policy/"
+                    >Privacy Notice</a
+                  >
+                </li>
+                <li>
+                  <a href="https://tourism.gov.in/terms-and-conditions"
+                    >Terms of Service</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://maharashtratourism.gov.in/accessibility-statement/"
+                    >Accessibility Statement</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://tourism.gov.in/about-us/indian-tourism-offices"
+                    >Grievance Officer</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.humanrights-in-tourism.net/our-commitment"
+                    >Human Rights Statement</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.grantthornton.global/en/modern-slavery-statement/"
+                    >Modern Slavery Statement</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

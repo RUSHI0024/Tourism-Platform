@@ -1,0 +1,256 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Yatra - New Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* ===== HEADER (FIXED + CLEAN FLEX) ===== */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 20px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 1000;
+      }
+
+      .logo-link {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .logo-big {
+        font-size: 28px;
+        font-weight: 900;
+      }
+
+      /* CENTER NAV */
+      nav {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .nav-links a:hover {
+        color: #ffd700;
+      }
+
+      /* RIGHT SIDE */
+      .nav-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .login-btn {
+        padding: 8px 16px;
+        border: 1px solid white;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        background: transparent;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .login-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffd700;
+      }
+
+      /* ===== EMPTY CONTENT ===== */
+      .page-content {
+        min-height: 80vh;
+        padding-top: 120px;
+      }
+
+      /* ===== FOOTER ===== */
+      .main-footer {
+        background-color: #000;
+        color: white;
+        padding: 60px 40px;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-logo {
+        font-size: 32px;
+        font-weight: 900;
+        margin-bottom: 15px;
+      }
+
+      .copyright {
+        font-size: 14px;
+        color: #aaa;
+      }
+
+      .footer-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+      }
+
+      .footer-col h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+      }
+
+      .footer-col ul {
+        list-style: none;
+      }
+
+      .footer-col li {
+        margin-bottom: 12px;
+      }
+
+      .footer-col a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .footer-col a:hover {
+        color: #ffd700;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="index.html" class="logo-link">
+        <div class="logo">
+          <span class="logo-big">YATRA</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="About_Yatra.HTML">ABOUT YATRA</a></li>
+          <li><a href="PlanYourTrip.html">PLAN YOUR TRIP</a></li>
+          <li><a href="Destinations.html">DESTINATIONS</a></li>
+          <li><a href="Inspiration.HTML">INSPIRATION</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-container">
+        <a href="login" class="login-btn">Login</a>
+      </div>
+    </header>
+
+    <!-- EMPTY CONTENT -->
+    <section class="page-content">
+      <!-- Your page content goes here -->
+      VISIT INDIA CONTENT HERE
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-left">
+          <div class="footer-logo">Visit Yatra</div>
+          <div class="copyright">© 2026 Yatra – Smart Tourism Platform</div>
+        </div>
+
+        <div class="footer-right">
+          <div class="footer-columns">
+            <div class="footer-col">
+              <h3>VISIT INDIA</h3>
+              <ul>
+                <li><a href="visit_india.html">Things to do</a></li>
+                <li><a href="visit_india.html">Travel within India</a></li>
+                <li><a href="visit_india.html">Accommodation</a></li>
+                <li><a href="visit_india.html">Safe travel in India</a></li>
+                <li><a href="visit_india.html">Festivals & Events</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <h3>TERMS & POLICIES</h3>
+              <ul>
+                <li>
+                  <a href="https://itdc.co.in/privacy-policy/"
+                    >Privacy Notice</a
+                  >
+                </li>
+                <li>
+                  <a href="https://tourism.gov.in/terms-and-conditions"
+                    >Terms of Service</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://maharashtratourism.gov.in/accessibility-statement/"
+                    >Accessibility Statement</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://tourism.gov.in/about-us/indian-tourism-offices"
+                    >Grievance Officer</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.humanrights-in-tourism.net/our-commitment"
+                    >Human Rights Statement</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.grantthornton.global/en/modern-slavery-statement/"
+                    >Modern Slavery Statement</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+```
