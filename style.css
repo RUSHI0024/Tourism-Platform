@@ -21,6 +21,15 @@ header {
   z-index: 1000;
   transition: background 0.3s;
 }
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
 
 header.scrolled {
   background: rgba(0,0,0,0.85);
