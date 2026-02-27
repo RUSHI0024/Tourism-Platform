@@ -1,28 +1,16 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Yatra - New Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Destinations - Yatra</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="style.css" />
 
     <style>
       * {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
       }
-
-      body {
-        font-family: "Montserrat", sans-serif;
-      }
-
-      /* ===== HEADER (FIXED + CLEAN FLEX) ===== */
       header {
         position: fixed;
         top: 0;
@@ -32,8 +20,17 @@
         align-items: center;
         justify-content: space-between;
         color: white;
-        background: rgba(0, 0, 0, 0.95);
+        /* Completely transparent at start - NO background, NO blur, NO border, NO shadow */
+        background: transparent;
+        transition: all 0.3s ease;
         z-index: 1000;
+      }
+
+      /* Scrolled state - turns solid black */
+      header.scrolled {
+        background: rgba(0, 0, 0, 0.95);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       .logo-link {
@@ -93,74 +90,105 @@
         color: #ffd700;
       }
 
-      /* ===== EMPTY CONTENT ===== */
-      .page-content {
-        min-height: 80vh;
-        padding-top: 120px;
+      /* Body - NO padding-top now, header overlays perfectly */
+      body {
+        margin: 0;
+        overflow-x: hidden;
       }
 
-      /* ===== FOOTER ===== */
-      .main-footer {
-        background-color: #000;
-        color: white;
-        padding: 60px 40px;
-      }
-
-      .footer-content {
+      /* ===== HERO ===== */
+      .page-hero {
+        width: 100%;
+        min-height: 60vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+          url("https://images.unsplash.com/photo-1505761671935-60b3a7427bad");
+        background-size: cover;
+        background-position: center;
         display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        max-width: 1200px;
-        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 80px 20px 40px 20px; /* Top padding ONLY for fixed header space */
+        color: #fff;
+        margin-top: 0; /* Ensure no top margin */
       }
 
-      .footer-logo {
-        font-size: 32px;
+      .page-hero h1 {
+        font-size: 52px;
         font-weight: 900;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
       }
 
-      .copyright {
-        font-size: 14px;
-        color: #aaa;
+      .page-hero p {
+        font-size: 18px;
+        opacity: 0.95;
       }
 
-      .footer-columns {
+      /* ===== SECTION ===== */
+      .section {
+        padding: 70px 8%;
+      }
+
+      .section.light {
+        background: #f7f9fc;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      /* ===== GRID ===== */
+      .dest-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
       }
 
-      .footer-col h3 {
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 25px;
-        text-transform: uppercase;
+      .dest-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        transition: 0.3s;
       }
 
-      .footer-col ul {
-        list-style: none;
+      .dest-card:hover {
+        transform: translateY(-6px);
       }
 
-      .footer-col li {
-        margin-bottom: 12px;
+      .dest-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
       }
 
-      .footer-col a {
-        color: white;
-        text-decoration: none;
+      .dest-card-content {
+        padding: 20px;
+      }
+
+      .dest-card h3 {
+        margin-bottom: 8px;
+      }
+
+      .dest-card p {
+        color: #666;
         font-size: 14px;
       }
 
-      .footer-col a:hover {
-        color: #ffd700;
+      /* responsive */
+      @media (max-width: 900px) {
+        .page-hero h1 {
+          font-size: 36px;
+        }
       }
     </style>
   </head>
 
   <body>
-    <!-- HEADER -->
-    <header>
+    <!-- ===== HEADER ===== -->
+    <header id="header">
       <a href="index.html" class="logo-link">
         <div class="logo">
           <span class="logo-big">YATRA</span>
@@ -181,13 +209,66 @@
       </div>
     </header>
 
-    <!-- EMPTY CONTENT -->
-    <section class="page-content">
-      <!-- Your page content goes here -->
-      VISIT INDIA CONTENT HERE
+    <!-- ===== HERO ===== -->
+    <section class="page-hero">
+      <div>
+        <h1>EXPLORE DESTINATIONS</h1>
+        <p>Discover India's most breathtaking places.</p>
+      </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ===== DESTINATIONS ===== -->
+    <section class="section">
+      <div class="container">
+        <h2 style="text-align: center; font-size: 34px; font-weight: 900">
+          POPULAR DESTINATIONS
+        </h2>
+
+        <div class="dest-grid">
+          <div class="dest-card">
+            <img
+              src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da"
+            />
+            <div class="dest-card-content">
+              <h3>Agra</h3>
+              <p>Home of the iconic Taj Mahal and Mughal heritage.</p>
+            </div>
+          </div>
+
+          <div class="dest-card">
+            <img
+              src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09a"
+            />
+            <div class="dest-card-content">
+              <h3>Jaipur</h3>
+              <p>The Pink City known for forts, palaces, and culture.</p>
+            </div>
+          </div>
+
+          <div class="dest-card">
+            <img
+              src="https://images.unsplash.com/photo-1502082553048-f009c37129b9"
+            />
+            <div class="dest-card-content">
+              <h3>Goa</h3>
+              <p>India's favorite beach destination and nightlife hub.</p>
+            </div>
+          </div>
+
+          <div class="dest-card">
+            <img
+              src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073"
+            />
+            <div class="dest-card-content">
+              <h3>Kerala</h3>
+              <p>Experience backwaters, greenery, and peaceful nature.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER (UNCHANGED) ===== -->
     <footer class="main-footer">
       <div class="footer-content">
         <div class="footer-left">
@@ -251,6 +332,17 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      // Smooth scroll effect for header
+      window.addEventListener("scroll", function () {
+        const header = document.getElementById("header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+    </script>
   </body>
 </html>
-```

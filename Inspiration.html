@@ -1,28 +1,17 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Yatra - New Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inspiration - Yatra</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="style.css" />
 
     <style>
       * {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
       }
 
-      body {
-        font-family: "Montserrat", sans-serif;
-      }
-
-      /* ===== HEADER (FIXED + CLEAN FLEX) ===== */
       header {
         position: fixed;
         top: 0;
@@ -32,8 +21,17 @@
         align-items: center;
         justify-content: space-between;
         color: white;
-        background: rgba(0, 0, 0, 0.95);
+        /* Completely transparent at start - NO background, NO blur, NO border, NO shadow */
+        background: transparent;
+        transition: all 0.3s ease;
         z-index: 1000;
+      }
+
+      /* Scrolled state - turns solid black */
+      header.scrolled {
+        background: rgba(0, 0, 0, 0.95);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       .logo-link {
@@ -93,74 +91,123 @@
         color: #ffd700;
       }
 
-      /* ===== EMPTY CONTENT ===== */
-      .page-content {
-        min-height: 80vh;
-        padding-top: 120px;
+      body {
+        margin: 0;
+        overflow-x: hidden;
       }
 
-      /* ===== FOOTER ===== */
-      .main-footer {
-        background-color: #000;
-        color: white;
-        padding: 60px 40px;
-      }
-
-      .footer-content {
+      /* ===== HERO ===== */
+      .page-hero {
+        width: 100%;
+        min-height: 60vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+          url("https://images.unsplash.com/photo-1501555088652-021faa106b9b");
+        background-size: cover;
+        background-position: center;
         display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        max-width: 1200px;
-        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 80px 20px 40px 20px; /* Top padding for header overlay */
+        color: #fff;
+        margin-top: 0;
       }
 
-      .footer-logo {
+      .page-hero h1 {
+        font-size: 52px;
+        font-weight: 900;
+        margin-bottom: 10px;
+      }
+
+      .page-hero p {
+        font-size: 18px;
+        opacity: 0.95;
+      }
+
+      /* ===== SECTION ===== */
+      .section {
+        padding: 70px 8%;
+      }
+
+      .section.light {
+        background: #f7f9fc;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      /* ===== INSPIRATION GRID ===== */
+      .inspire-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .inspire-card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        transition: 0.3s;
+      }
+
+      .inspire-card:hover {
+        transform: translateY(-6px);
+      }
+
+      .inspire-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .inspire-content {
+        padding: 20px;
+      }
+
+      .inspire-content h3 {
+        margin-bottom: 8px;
+      }
+
+      .inspire-content p {
+        color: #666;
+        font-size: 14px;
+      }
+
+      /* ===== QUOTE SECTION ===== */
+      .quote-box {
+        text-align: center;
+        max-width: 900px;
+        margin: auto;
+      }
+
+      .quote-box h2 {
         font-size: 32px;
         font-weight: 900;
         margin-bottom: 15px;
       }
 
-      .copyright {
-        font-size: 14px;
-        color: #aaa;
+      .quote-box p {
+        color: #555;
+        font-size: 18px;
+        line-height: 1.7;
       }
 
-      .footer-columns {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
-      }
-
-      .footer-col h3 {
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 25px;
-        text-transform: uppercase;
-      }
-
-      .footer-col ul {
-        list-style: none;
-      }
-
-      .footer-col li {
-        margin-bottom: 12px;
-      }
-
-      .footer-col a {
-        color: white;
-        text-decoration: none;
-        font-size: 14px;
-      }
-
-      .footer-col a:hover {
-        color: #ffd700;
+      /* responsive */
+      @media (max-width: 900px) {
+        .page-hero h1 {
+          font-size: 36px;
+        }
       }
     </style>
   </head>
 
   <body>
-    <!-- HEADER -->
-    <header>
+    <!-- ===== HEADER WITH ID FOR JS ===== -->
+    <header id="header">
       <a href="index.html" class="logo-link">
         <div class="logo">
           <span class="logo-big">YATRA</span>
@@ -181,13 +228,83 @@
       </div>
     </header>
 
-    <!-- EMPTY CONTENT -->
-    <section class="page-content">
-      <!-- Your page content goes here -->
-      VISIT INDIA CONTENT HERE
+    <!-- ===== HERO ===== -->
+    <section class="page-hero">
+      <div>
+        <h1>TRAVEL INSPIRATION</h1>
+        <p>Find ideas that spark your next unforgettable journey.</p>
+      </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ===== INSPIRATION CARDS ===== -->
+    <section class="section">
+      <div class="container">
+        <h2 style="text-align: center; font-size: 34px; font-weight: 900">
+          GET INSPIRED
+        </h2>
+
+        <div class="inspire-grid">
+          <div class="inspire-card">
+            <img
+              src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c"
+            />
+            <div class="inspire-content">
+              <h3>Spiritual Journeys</h3>
+              <p>
+                Discover peaceful temples, sacred rivers, and soulful
+                destinations.
+              </p>
+            </div>
+          </div>
+
+          <div class="inspire-card">
+            <img
+              src="https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+            />
+            <div class="inspire-content">
+              <h3>Adventure Trips</h3>
+              <p>
+                From mountains to deserts — fuel your thrill for exploration.
+              </p>
+            </div>
+          </div>
+
+          <div class="inspire-card">
+            <img
+              src="https://images.unsplash.com/photo-1493558103817-58b2924bce98"
+            />
+            <div class="inspire-content">
+              <h3>Romantic Escapes</h3>
+              <p>Perfect destinations for couples and memorable moments.</p>
+            </div>
+          </div>
+
+          <div class="inspire-card">
+            <img
+              src="https://images.unsplash.com/photo-1477587458883-47145ed94245"
+            />
+            <div class="inspire-content">
+              <h3>Nature Retreats</h3>
+              <p>Reconnect with nature in India's most scenic landscapes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== QUOTE SECTION ===== -->
+    <section class="section light">
+      <div class="quote-box">
+        <h2>Travel Opens Your Mind</h2>
+        <p>
+          "The world is a book, and those who do not travel read only one page."
+          Let Yatra inspire your next chapter of exploration across incredible
+          India.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER (UNCHANGED) ===== -->
     <footer class="main-footer">
       <div class="footer-content">
         <div class="footer-left">
@@ -251,6 +368,17 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      // Smooth scroll effect for header - completely transparent → solid black
+      window.addEventListener("scroll", function () {
+        const header = document.getElementById("header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+    </script>
   </body>
 </html>
-```

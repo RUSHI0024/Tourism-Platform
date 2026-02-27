@@ -1,28 +1,17 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Yatra - New Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Yatra</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="style.css" />
 
     <style>
+      /* ===== PAGE FIXES ===== */
       * {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
       }
-
-      body {
-        font-family: "Montserrat", sans-serif;
-      }
-
-      /* ===== HEADER (FIXED + CLEAN FLEX) ===== */
       header {
         position: fixed;
         top: 0;
@@ -32,8 +21,17 @@
         align-items: center;
         justify-content: space-between;
         color: white;
-        background: rgba(0, 0, 0, 0.95);
+        /* Completely transparent at start - NO background, NO blur, NO border, NO shadow */
+        background: transparent;
+        transition: all 0.3s ease;
         z-index: 1000;
+      }
+
+      /* Scrolled state - turns solid black */
+      header.scrolled {
+        background: rgba(0, 0, 0, 0.95);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       .logo-link {
@@ -93,74 +91,163 @@
         color: #ffd700;
       }
 
-      /* ===== EMPTY CONTENT ===== */
-      .page-content {
-        min-height: 80vh;
-        padding-top: 120px;
+      body {
+        margin: 0;
+        overflow-x: hidden; /* 🔥 fixes left overflow */
       }
 
-      /* ===== FOOTER ===== */
-      .main-footer {
-        background-color: #000;
-        color: white;
-        padding: 60px 40px;
-      }
-
-      .footer-content {
+      /* ===== HERO ===== */
+      .about-hero {
+        width: 100%;
+        min-height: 60vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+          url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");
+        background-size: cover;
+        background-position: center;
         display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        max-width: 1200px;
-        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 80px 20px 40px 20px; /* Top padding for header overlay */
+        color: #fff;
+        margin-top: 0;
       }
 
-      .footer-logo {
-        font-size: 32px;
+      .about-hero-content {
+        max-width: 900px;
+        margin: auto;
+      }
+
+      .about-hero h1 {
+        font-size: 52px;
         font-weight: 900;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+      }
+
+      .about-hero p {
+        font-size: 18px;
+        opacity: 0.95;
+      }
+
+      /* ===== COMMON SECTION ===== */
+      .about-section {
+        padding: 70px 8%;
+      }
+
+      .about-section.light {
+        background: #f7f9fc;
+      }
+
+      .about-container {
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      /* ===== SPLIT ===== */
+      .about-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .about-text h2 {
+        font-size: 34px;
+        font-weight: 900;
+        margin-bottom: 20px;
+      }
+
+      .about-text p {
+        color: #555;
+        line-height: 1.8;
         margin-bottom: 15px;
       }
 
-      .copyright {
-        font-size: 14px;
-        color: #aaa;
+      .about-image img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        border-radius: 10px;
       }
 
-      .footer-columns {
+      /* ===== GRID ===== */
+      .about-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
       }
 
-      .footer-col h3 {
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 25px;
-        text-transform: uppercase;
+      .about-card {
+        background: #fff;
+        padding: 25px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        transition: 0.3s;
       }
 
-      .footer-col ul {
-        list-style: none;
+      .about-card:hover {
+        transform: translateY(-6px);
       }
 
-      .footer-col li {
-        margin-bottom: 12px;
+      .about-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 15px;
       }
 
-      .footer-col a {
-        color: white;
-        text-decoration: none;
+      .about-card h3 {
+        margin-bottom: 10px;
+        font-size: 20px;
+      }
+
+      .about-card p {
+        color: #666;
         font-size: 14px;
       }
 
-      .footer-col a:hover {
-        color: #ffd700;
+      /* ===== STATS ===== */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        text-align: center;
+        margin-top: 40px;
+      }
+
+      .stat-box {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .stat-box h2 {
+        font-size: 38px;
+        color: #ff6b00;
+        margin-bottom: 5px;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 900px) {
+        .about-split {
+          grid-template-columns: 1fr;
+        }
+
+        .about-hero h1 {
+          font-size: 36px;
+        }
       }
     </style>
   </head>
 
   <body>
-    <!-- HEADER -->
-    <header>
+    <!-- ===== HEADER WITH ID FOR JS ===== -->
+    <header id="header">
       <a href="index.html" class="logo-link">
         <div class="logo">
           <span class="logo-big">YATRA</span>
@@ -181,10 +268,106 @@
       </div>
     </header>
 
-    <!-- EMPTY CONTENT -->
-    <section class="page-content">
-      <!-- Your page content goes here -->
-      VISIT INDIA CONTENT HERE
+    <!-- ===== HERO ===== -->
+    <section class="about-hero">
+      <div class="about-hero-content">
+        <h1>ABOUT YATRA</h1>
+        <p>Your smart companion for discovering the real India.</p>
+      </div>
+    </section>
+
+    <!-- ===== WHO WE ARE ===== -->
+    <section class="about-section">
+      <div class="about-container about-split">
+        <div class="about-text">
+          <h2>WHO WE ARE</h2>
+          <p>
+            Yatra is a smart tourism platform designed to transform the way
+            travelers explore India. Our goal is to combine technology with
+            tourism to create a seamless and intelligent travel experience.
+          </p>
+          <p>
+            From spiritual destinations to modern city adventures, Yatra helps
+            travelers discover, plan, and explore India with confidence.
+          </p>
+        </div>
+
+        <div class="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da"
+            alt="India travel"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHAT WE OFFER ===== -->
+    <section class="about-section light">
+      <div class="about-container">
+        <h2 style="text-align: center; font-size: 34px; font-weight: 900">
+          WHAT YATRA OFFERS
+        </h2>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <img
+              src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800"
+            />
+            <h3>Smart Trip Planning</h3>
+            <p>
+              Plan journeys efficiently with intelligent route and destination
+              suggestions.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <img
+              src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1"
+            />
+            <h3>Cultural Discovery</h3>
+            <p>Explore India's rich heritage, traditions, and hidden gems.</p>
+          </div>
+
+          <div class="about-card">
+            <img
+              src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd"
+            />
+            <h3>Safe Travel</h3>
+            <p>Get reliable travel information and safety guidance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="about-section">
+      <div class="about-container">
+        <h2 style="text-align: center; font-size: 34px; font-weight: 900">
+          YATRA IN NUMBERS
+        </h2>
+
+        <div class="stats">
+          <div class="stat-box">
+            <h2>500+</h2>
+            <p>Destinations Covered</p>
+          </div>
+
+          <div class="stat-box">
+            <h2>10K+</h2>
+            <p>Happy Travelers</p>
+          </div>
+
+          <div class="stat-box">
+            <h2>24/7</h2>
+            <p>Travel Support</p>
+          </div>
+
+          <div class="stat-box">
+            <h2>100%</h2>
+            <p>Smart Planning</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- FOOTER -->
@@ -251,6 +434,17 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      // Smooth scroll effect for header - completely transparent → solid black
+      window.addEventListener("scroll", function () {
+        const header = document.getElementById("header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+    </script>
   </body>
 </html>
-```
